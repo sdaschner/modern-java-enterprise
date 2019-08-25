@@ -5,7 +5,6 @@ import com.sebastian_daschner.coffee_shop.orders.CoffeeTypeDeserializer;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.json.bind.annotation.JsonbTypeAdapter;
 import javax.validation.constraints.NotNull;
-import java.math.BigInteger;
 import java.util.UUID;
 
 public class CoffeeOrder {
@@ -17,7 +16,7 @@ public class CoffeeOrder {
     @JsonbTypeAdapter(CoffeeTypeDeserializer.class)
     private CoffeeType type;
 
-    private BigInteger price;
+    private int price;
 
     private OrderStatus status = OrderStatus.PREPARING;
 
@@ -33,16 +32,16 @@ public class CoffeeOrder {
         return type;
     }
 
-    public void setType(CoffeeType type) {
-        this.type = type;
-    }
-
-    public BigInteger getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(BigInteger price) {
+    public void setPrice(int price) {
         this.price = price;
+    }
+
+    public void setType(CoffeeType type) {
+        this.type = type;
     }
 
     public OrderStatus getStatus() {

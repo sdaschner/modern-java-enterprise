@@ -5,6 +5,8 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriBuilder;
+import java.net.URI;
 
 class CoffeeShopSystem {
 
@@ -13,7 +15,13 @@ class CoffeeShopSystem {
 
     public CoffeeShopSystem() {
         client = ClientBuilder.newClient();
-        healthTarget = client.target("http://localhost:9080/health");
+        healthTarget = client.target(buildHealthUri());
+    }
+
+    private URI buildHealthUri() {
+        String host = System.getProperty("coffee-shop.test.host", "localhost");
+        String port = System.getProperty("coffee-shop.test.port", "9080");
+        return UriBuilder.fromUri("http://{host}:{port}/health/").build(host, port);
     }
 
     public boolean isSystemUp() {
@@ -33,4 +41,5 @@ class CoffeeShopSystem {
                 .map(o -> o.getJsonObject("data").getString("version"))
                 .findAny().orElse(null);
     }
+
 }

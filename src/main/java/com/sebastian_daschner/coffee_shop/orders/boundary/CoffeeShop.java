@@ -1,8 +1,8 @@
 package com.sebastian_daschner.coffee_shop.orders.boundary;
 
 import com.sebastian_daschner.coffee_shop.orders.control.Orders;
-import com.sebastian_daschner.coffee_shop.price.control.PriceCalculator;
 import com.sebastian_daschner.coffee_shop.orders.entity.CoffeeOrder;
+import com.sebastian_daschner.coffee_shop.price.control.PriceCalculator;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -26,9 +26,7 @@ public class CoffeeShop {
         return orders.retrieve(id);
     }
 
-    //    @Counted(name = "coffees_total")
     public CoffeeOrder orderCoffee(CoffeeOrder order) {
-
         order.setId(UUID.randomUUID());
         order.setPrice(priceCalculator.calculatePrice(order));
 

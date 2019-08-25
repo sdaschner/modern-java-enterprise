@@ -1,4 +1,4 @@
-package com.sebastian_daschner.coffee_shop.health.boundary;
+package com.sebastian_daschner.coffee_shop.health;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.health.HealthCheck;
@@ -14,13 +14,13 @@ public class Health implements HealthCheck {
 
     @Inject
     @ConfigProperty(name = "version", defaultValue = "N/A")
-    String appVersion;
+    String version;
 
     @Override
     public HealthCheckResponse call() {
         return HealthCheckResponse.named("coffee-shop")
                 .up()
-                .withData("version", appVersion)
+                .withData("version", version)
                 .build();
     }
 
