@@ -1,0 +1,8 @@
+<server>
+    <featureManager>
+        <feature>javaee-8.0</feature>
+        <feature>microprofile-3.0</feature>
+    </featureManager>
+
+    <mpMetrics authentication="false"/>
+</server>
