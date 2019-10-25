@@ -2,16 +2,15 @@
 
 
 
-        Java EE             MicroProfile
-        -------             ------------
-        JAX-RS              JAX-RS    
-        CDI                 CDI
-        JPA                 MicroProfile Config
-        ...                 ...
-
-         |
-         |
-         v
-
-        Jakarta EE
-        ----------
+                   user
+                     \
+                      ┘
+               .──.    ┌───────────┐
+               │DB│<-->│coffee-shop│
+               └──┘    └───────────┘
+                           \ async
+                            \
+                             ┘
+                          ┌─────────┐
+                          │ barista │
+                          └─────────┘

@@ -1,0 +1,14 @@
+
+
+
+
+
+          Key takeaways
+
+          • Keep turnaround cycles short (< 5 secs)
+            • Compilation
+            • Unit testing
+            • (Hot-)deployment
+            • System testing
+          • Regard test life cycles
+          • Local dev workflow && Continuous Delivery

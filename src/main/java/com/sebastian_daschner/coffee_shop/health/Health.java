@@ -8,19 +8,19 @@ import org.eclipse.microprofile.health.Readiness;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-@ApplicationScoped
 @Readiness
+@ApplicationScoped
 public class Health implements HealthCheck {
 
     @Inject
-    @ConfigProperty(name = "version", defaultValue = "N/A")
+    @ConfigProperty(name = "version")
     String version;
 
     @Override
     public HealthCheckResponse call() {
         return HealthCheckResponse.named("coffee-shop")
-                .up()
                 .withData("version", version)
+                .up()
                 .build();
     }
 

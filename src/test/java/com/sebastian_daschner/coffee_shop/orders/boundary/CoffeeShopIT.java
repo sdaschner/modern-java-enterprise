@@ -15,7 +15,7 @@ public class CoffeeShopIT {
 
     @Test
     void testVersion() {
-        assertThat(coffeeShopSystem.getAppVersion()).isEqualTo("1.2.4");
+        assertThat(coffeeShopSystem.getAppVersion()).isEqualTo("1.2.3");
     }
 
 }
