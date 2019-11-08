@@ -2,16 +2,13 @@
 
 
 
-                        system test
-                             |       
-                             v   
-                .──.    ┌───────────┐
-                │DB│<-->│coffee-shop│
-                └──┘    └───────────┘
-                              |
-                              |
-                              v
-                         ┌─────────┐
-                         │ barista │
-                         │ (mock)  │
-                         └─────────┘
+
+        Thank you for your attention!
+
+        • daschner.dev/modern-ee
+        • @DaschnerS
+        • Book: Architecting Modern Java EE Applications
+
+        • jakarta.ee
+        • microprofile.io
+        • openliberty.io

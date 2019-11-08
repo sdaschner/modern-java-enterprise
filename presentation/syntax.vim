@@ -4,8 +4,10 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn keyword types proxy
-syn keyword special main POD
+syn match purple "awesome"
 
-hi def link types Type
-hi def link special Special
+hi def link red String
+hi def link blue Comment
+hi def link azul Function
+hi def link green Type
+hi def link purple Special
