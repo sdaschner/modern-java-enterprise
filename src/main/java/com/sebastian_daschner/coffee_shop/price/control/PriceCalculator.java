@@ -6,16 +6,13 @@ import org.eclipse.microprofile.config.ConfigProvider;
 
 public class PriceCalculator {
 
-    public int calculatePrice(CoffeeOrder order) {
-        return getPriceForType(order.getType());
+    public double calculatePrice(CoffeeOrder order) {
+        return getConfiguredPrice(order.getType());
     }
 
-    private int getPriceForType(CoffeeType type) {
+    private double getConfiguredPrice(CoffeeType type) {
         String key = "coffee.prices." + type.name().toLowerCase();
-        return ConfigProvider.getConfig()
-                .getOptionalValue(key, int.class)
-                .orElse(0);
+        return ConfigProvider.getConfig().getValue(key, double.class);
     }
-
 
 }

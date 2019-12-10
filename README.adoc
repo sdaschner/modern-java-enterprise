@@ -1,9 +1,5 @@
 = Enterprise Coffee
 
-The example project of my _Modern Enterprise Java from the ground up_ presentation.
+The example project of my Jakarta EE Tech Talk _Best practices for modern Enterprise Java projects_.
 
 Comprises a _coffee-shop_ application, which can be deployed locally, or to a Kubernetes and Istio cluster.
-
-== Run locally
-
-Run the `./liberty-dev.sh` script in order to start the Liberty `dev` mode locally.

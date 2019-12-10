@@ -26,23 +26,16 @@ spec:
     spec:
       containers:
       - name: coffee-shop
-        image: sdaschner/coffee-shop:modern-ee-1
+        image: sdaschner/coffee-shop:ee-best-practices-1
         imagePullPolicy: Always
         ports:
         - containerPort: 9080
-        livenessProbe:
-          exec:
-            command:
-            - /bin/sh
-            - -c
-            - curl -f localhost:9080/
-          initialDelaySeconds: 40
         readinessProbe:
           exec:
             command:
             - /bin/sh
             - -c
-            - curl -f localhost:9080/coffee-shop/health
-          initialDelaySeconds: 60
+            - curl -f localhost:9080/health
+          initialDelaySeconds: 30
       restartPolicy: Always
 ---

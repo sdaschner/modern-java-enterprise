@@ -16,7 +16,7 @@ public class CoffeeOrder {
     @JsonbTypeAdapter(CoffeeTypeDeserializer.class)
     private CoffeeType type;
 
-    private int price;
+    private double price;
 
     private OrderStatus status = OrderStatus.PREPARING;
 
@@ -32,16 +32,16 @@ public class CoffeeOrder {
         return type;
     }
 
-    public int getPrice() {
+    public void setType(CoffeeType type) {
+        this.type = type;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public void setType(CoffeeType type) {
-        this.type = type;
     }
 
     public OrderStatus getStatus() {

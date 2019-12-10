@@ -7,6 +7,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
+import java.util.concurrent.TimeUnit;
 
 class CoffeeShopSystem {
 
@@ -14,7 +15,10 @@ class CoffeeShopSystem {
     private final WebTarget healthTarget;
 
     public CoffeeShopSystem() {
-        client = ClientBuilder.newClient();
+        client = ClientBuilder.newBuilder()
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .readTimeout(5, TimeUnit.SECONDS)
+                .build();
         healthTarget = client.target(buildHealthUri());
     }
 
