@@ -24,7 +24,7 @@ class CoffeeShopSystem {
 
     private URI buildHealthUri() {
         String host = System.getProperty("coffee-shop.test.host", "localhost");
-        String port = System.getProperty("coffee-shop.test.port", "9080");
+        String port = System.getProperty("coffee-shop.test.port", "8080");
         return UriBuilder.fromUri("http://{host}:{port}/health/").build(host, port);
     }
 

@@ -4,6 +4,9 @@ import com.sebastian_daschner.coffee_shop.orders.entity.CoffeeOrder;
 import com.sebastian_daschner.coffee_shop.orders.entity.CoffeeType;
 import org.eclipse.microprofile.config.ConfigProvider;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class PriceCalculator {
 
     public double calculatePrice(CoffeeOrder order) {

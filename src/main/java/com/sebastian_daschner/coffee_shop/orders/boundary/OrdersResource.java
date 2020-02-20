@@ -7,7 +7,6 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonCollectors;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
@@ -28,9 +27,6 @@ public class OrdersResource {
 
     @Context
     UriInfo uriInfo;
-
-    @Context
-    HttpServletRequest request;
 
     @GET
     public JsonArray getOrders() {
