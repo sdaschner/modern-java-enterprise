@@ -8,7 +8,7 @@ spec:
   selector:
     app: coffee-shop
   ports:
-    - port: 9080
+    - port: 8080
       name: http
 ---
 
@@ -26,16 +26,61 @@ spec:
     spec:
       containers:
       - name: coffee-shop
-        image: sdaschner/coffee-shop:ee-best-practices-1
+        image: sdaschner/coffee-shop:ee-best-practices-2
         imagePullPolicy: Always
         ports:
-        - containerPort: 9080
+        - containerPort: 8080
         readinessProbe:
           exec:
             command:
             - /bin/sh
             - -c
-            - curl -f localhost:9080/health
-          initialDelaySeconds: 30
+            - curl -f localhost:8080/health
       restartPolicy: Always
+---
+
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: coffee-shop-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: coffee-shop
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - coffee-shop-gateway
+  http:
+  - route:
+    - destination:
+        host: coffee-shop
+        port:
+          number: 8080
+        subset: v1
+---
+
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: coffee-shop
+spec:
+  host: coffee-shop
+  subsets:
+  - name: v1
+    labels:
+      version: v1
 ---
