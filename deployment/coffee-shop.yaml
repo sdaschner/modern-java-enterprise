@@ -39,3 +39,49 @@ spec:
           initialDelaySeconds: 30
       restartPolicy: Always
 ---
+
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: coffee-shop-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: coffee-shop
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - coffee-shop-gateway
+  http:
+  - route:
+    - destination:
+        host: coffee-shop
+        port:
+          number: 9080
+        subset: v1
+---
+
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: coffee-shop
+spec:
+  host: coffee-shop
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+---
