@@ -1,55 +1,32 @@
 package com.sebastian_daschner.coffee_shop.orders.entity;
 
 import com.sebastian_daschner.coffee_shop.orders.CoffeeTypeDeserializer;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.json.bind.annotation.JsonbTypeAdapter;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public class CoffeeOrder {
+@Entity
+@Table(name = "orders")
+public class CoffeeOrder extends PanacheEntityBase {
 
+    @Id
+    @GeneratedValue
     @JsonbTransient
-    private UUID id;
+    public UUID id;
 
     @NotNull
     @JsonbTypeAdapter(CoffeeTypeDeserializer.class)
-    private CoffeeType type;
+    public CoffeeType type;
 
-    private double price;
+    public double price;
 
-    private OrderStatus status = OrderStatus.PREPARING;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public CoffeeType getType() {
-        return type;
-    }
-
-    public void setType(CoffeeType type) {
-        this.type = type;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
+    public OrderStatus status = OrderStatus.PREPARING;
 
 }

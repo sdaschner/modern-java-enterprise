@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee orders</title>
+</head>
+<body>
+<ul>
+    {#for order in orders}
+    <li>{order.type} ({order.status}), ${order.price}</li>
+    {/for}
+</ul>
+</body>
+</html>

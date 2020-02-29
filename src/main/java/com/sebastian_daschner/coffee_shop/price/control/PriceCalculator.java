@@ -10,7 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 public class PriceCalculator {
 
     public double calculatePrice(CoffeeOrder order) {
-        return getConfiguredPrice(order.getType());
+        return getConfiguredPrice(order.type);
     }
 
     private double getConfiguredPrice(CoffeeType type) {

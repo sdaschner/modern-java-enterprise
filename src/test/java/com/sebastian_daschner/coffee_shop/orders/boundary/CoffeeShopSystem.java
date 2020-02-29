@@ -11,11 +11,10 @@ import java.util.concurrent.TimeUnit;
 
 class CoffeeShopSystem {
 
-    private final Client client;
     private final WebTarget healthTarget;
 
     public CoffeeShopSystem() {
-        client = ClientBuilder.newBuilder()
+        Client client = ClientBuilder.newBuilder()
                 .connectTimeout(5, TimeUnit.SECONDS)
                 .readTimeout(5, TimeUnit.SECONDS)
                 .build();

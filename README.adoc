@@ -1,5 +1,51 @@
 = Enterprise Coffee
 
-The example project of my Jakarta EE Tech Talk _Best practices for modern Enterprise Java projects_.
+The example project of my Quarkus Talk.
 
 Comprises a _coffee-shop_ application, which can be deployed locally, or to a Kubernetes and Istio cluster.
+
+
+== Build
+
+----
+mvn package
+docker build -t coffee-shop .
+----
+
+
+== Run locally
+
+In order to run the Docker containers locally, you need to create a Docker network first: + 
+`docker network create --subnet=192.168.42.0/24 dkrnet`
+
+Start the database and then the container of our application:
+
+----
+./run-database.sh
+docker run --rm \
+  --name coffee-shop \
+  --network dkrnet \
+  -p 8080:8080 \
+  coffee-shop
+----
+
+Once the application has started, you can access it via Browser or the command line in a new terminal session:
+
+----
+curl localhost:8080/health 
+curl localhost:8080/orders -i -XPOST -H 'Content-Type: application/json' -d '{"type":"Espresso"}' 
+curl localhost:8080/orders
+----
+
+
+== Run in development mode
+
+In order to keep the application running while coding and to ensure a fast turnaround, you can start Quarkus in development mode.
+
+Make sure the database is still running (see above, `run-database.sh`) and start the application via Maven:
+
+----
+mvn quarkus:dev
+----
+
+You can access the application in the same was as above.
