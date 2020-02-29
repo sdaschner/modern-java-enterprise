@@ -5,12 +5,11 @@
 
         Key takeaways
 
-        • Use known technology & APIs
-        • Focus on what solves business problems
-        • Jakarta EE + MicroProfile = awesome
-        • Especially interesting technology for existing investment in EE
-        • Keep it simple & leverage build tools conventions
-        • Keep turnaround times short 
-        • Invest in testing, automation, and CI/CD
+        • Quarkus == modern cloud-native Java
+        • Build upon known APIs
+        • Care about developer experience
+        • Interesting technology for existing investment in EE
+        • You can go native (but don't have to)
+        • Quarkus Guides are your friend
 
 
