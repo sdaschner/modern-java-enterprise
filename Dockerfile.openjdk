@@ -1,0 +1,6 @@
+FROM adoptopenjdk/openjdk14:x86_64-alpine-jre-14_36
+
+COPY target/lib/* /deployments/lib/
+COPY target/*-runner.jar /deployments/app.jar
+
+CMD ["java", "-jar", "-Dquarkus.http.host=0.0.0.0", "-Djava.util.logging.manager=org.jboss.logmanager.LogManager", "/deployments/app.jar"]
