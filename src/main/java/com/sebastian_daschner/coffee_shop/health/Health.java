@@ -19,8 +19,8 @@ public class Health implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         return HealthCheckResponse.named("coffee-shop")
-                .withData("version", version)
                 .up()
+                .withData("version", version)
                 .build();
     }
 

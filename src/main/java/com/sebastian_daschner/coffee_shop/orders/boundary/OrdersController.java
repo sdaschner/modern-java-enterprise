@@ -16,16 +16,17 @@ import java.util.List;
 @Produces(MediaType.TEXT_HTML)
 public class OrdersController {
 
+    @ResourcePath("index.html")
+    Template indexTemplate;
+
     @Inject
     CoffeeShop coffeeShop;
 
-    @ResourcePath("orders.html")
-    Template ordersTemplate;
-
     @GET
-    public TemplateInstance getOrders() {
+    public TemplateInstance index() {
         List<CoffeeOrder> orders = coffeeShop.getOrders();
-        return ordersTemplate.data("orders", orders);
+        return indexTemplate.data("orders", orders);
     }
+
 
 }

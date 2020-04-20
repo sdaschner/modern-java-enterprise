@@ -25,8 +25,8 @@ public class CoffeeOrder extends PanacheEntityBase {
     @JsonbTypeAdapter(CoffeeTypeDeserializer.class)
     public CoffeeType type;
 
-    public OrderStatus status = OrderStatus.PREPARING;
-
     public double price;
+
+    public OrderStatus status = OrderStatus.PREPARING;
 
 }
