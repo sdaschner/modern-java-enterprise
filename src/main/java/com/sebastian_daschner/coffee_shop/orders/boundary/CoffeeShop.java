@@ -6,7 +6,7 @@ import com.sebastian_daschner.coffee_shop.price.control.PriceCalculator;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
@@ -16,7 +16,7 @@ public class CoffeeShop {
     @Inject
     PriceCalculator priceCalculator;
 
-    public Collection<CoffeeOrder> getOrders() {
+    public List<CoffeeOrder> getOrders() {
         return CoffeeOrder.listAll();
     }
 

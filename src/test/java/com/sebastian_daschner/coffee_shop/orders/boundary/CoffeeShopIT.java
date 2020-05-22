@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CoffeeShopIT {
 
-    private CoffeeShopSystem coffeeShopSystem = new CoffeeShopSystem();
+    private final CoffeeShopSystem coffeeShopSystem = new CoffeeShopSystem();
 
     @Test
     void testIsSystemRunning() {
@@ -17,5 +17,7 @@ class CoffeeShopIT {
     void testVersion() {
         assertThat(coffeeShopSystem.getAppVersion()).isEqualTo("1.2.3");
     }
+
+
 
 }
