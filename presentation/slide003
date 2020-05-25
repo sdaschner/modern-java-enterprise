@@ -6,6 +6,7 @@
         Key takeaways
 
         • Quarkus == modern cloud-native Java
+        • Build-time optimization FTW
         • Build upon known APIs
         • Care about developer experience
         • Interesting technology for existing investment in EE
