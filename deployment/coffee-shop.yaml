@@ -30,13 +30,10 @@ spec:
     spec:
       containers:
       - name: coffee-shop
-        image: sdaschner/coffee-shop:quarkus-1
+        image: sdaschner/coffee-shop:quarkus-101
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        envFrom:
-        - secretRef:
-            name: daschner-postgres
         readinessProbe:
           exec:
             command:

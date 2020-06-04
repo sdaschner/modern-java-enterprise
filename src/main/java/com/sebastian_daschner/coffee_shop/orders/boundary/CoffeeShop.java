@@ -2,6 +2,7 @@ package com.sebastian_daschner.coffee_shop.orders.boundary;
 
 import com.sebastian_daschner.coffee_shop.orders.entity.CoffeeOrder;
 import com.sebastian_daschner.coffee_shop.price.control.PriceCalculator;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -24,10 +25,12 @@ public class CoffeeShop {
         return CoffeeOrder.findById(id);
     }
 
+    @Counted(name = "coffees_total")
     public CoffeeOrder orderCoffee(CoffeeOrder order) {
         order.price = priceCalculator.calculatePrice(order);
 
         CoffeeOrder.persist(order);
+
         return order;
     }
 
